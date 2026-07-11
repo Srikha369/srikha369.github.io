@@ -1,11 +1,383 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>My GitHub Website</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Srikha — Quantitative Research &amp; AI Engineering</title>
+<meta name="description" content="Portfolio of Srikha — mathematics + quantitative research, AI/software engineering projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF8F3;
+    --paper-dim:#F1EEE5;
+    --ink:#1C2541;
+    --ink-soft:#5B6478;
+    --line:#D9D4C6;
+    --accent:#5B4FE5;
+    --accent-dim:#EDEBFB;
+    --amber:#B8860B;
+    --radius:2px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:40px 40px;
+    background-position:-1px -1px;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none!important; transition:none!important;}
+  }
+  a{color:inherit;}
+  .wrap{max-width:920px; margin:0 auto; padding:0 28px;}
+  header.hero{padding:96px 0 64px;}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.06em;
+    color:var(--accent);
+    text-transform:uppercase;
+    margin:0 0 18px;
+  }
+  h1{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:clamp(2.4rem, 5vw, 3.6rem);
+    line-height:1.08;
+    margin:0 0 20px;
+    letter-spacing:-0.01em;
+  }
+  h1 em{
+    font-style:italic;
+    font-weight:400;
+    color:var(--accent);
+  }
+  .lede{
+    font-size:1.15rem;
+    color:var(--ink-soft);
+    max-width:60ch;
+    margin:0 0 32px;
+  }
+  .links{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 18px;
+    border:1px solid var(--ink);
+    border-radius:var(--radius);
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    text-decoration:none;
+    color:var(--ink);
+    background:transparent;
+    transition:background .15s ease, color .15s ease;
+  }
+  .btn.primary{background:var(--ink); color:var(--paper);}
+  .btn:hover{background:var(--accent); border-color:var(--accent); color:#fff;}
+
+  /* signal waveform */
+  .signal{margin-top:56px;}
+  .signal svg{width:100%; height:auto; display:block;}
+  .signal-caption{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11.5px;
+    color:var(--ink-soft);
+    margin-top:8px;
+    display:flex;
+    justify-content:space-between;
+  }
+
+  section{padding:56px 0;}
+  section.divider{border-top:1px solid var(--line);}
+  .section-label{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin:0 0 28px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .section-label::after{
+    content:'';
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+  h2{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.9rem;
+    margin:0 0 8px;
+  }
+
+  .projects{display:flex; flex-direction:column; gap:28px;}
+  .card{
+    border:1px solid var(--line);
+    background:var(--paper-dim);
+    border-radius:var(--radius);
+    padding:28px 30px;
+    position:relative;
+    overflow:hidden;
+  }
+  .card::before{
+    content:'';
+    position:absolute;
+    left:0; top:0; bottom:0;
+    width:3px;
+    background:var(--accent);
+  }
+  .card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:16px;
+    flex-wrap:wrap;
+    margin-bottom:10px;
+  }
+  .card-title{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.35rem;
+    margin:0;
+  }
+  .status{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    padding:3px 9px;
+    border-radius:20px;
+    white-space:nowrap;
+  }
+  .status.live{background:var(--accent-dim); color:var(--accent);}
+  .status.progress{background:#FBF1DC; color:var(--amber);}
+  .card p{color:var(--ink-soft); margin:0 0 16px;}
+  .tags{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px;}
+  .tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11.5px;
+    color:var(--ink);
+    background:#fff;
+    border:1px solid var(--line);
+    padding:3px 9px;
+    border-radius:20px;
+  }
+  .card-links{display:flex; gap:16px;}
+  .card-links a{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    text-decoration:none;
+    color:var(--accent);
+    border-bottom:1px solid transparent;
+  }
+  .card-links a:hover{border-bottom-color:var(--accent);}
+
+  .placeholder{
+    border:1px dashed var(--line);
+    background:transparent;
+  }
+  .placeholder::before{background:var(--line);}
+  .placeholder .card-title{color:var(--ink-soft);}
+
+  footer{
+    padding:48px 0 72px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    color:var(--ink-soft);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  footer a{color:var(--ink); text-decoration:none; border-bottom:1px solid var(--line);}
+  footer a:hover{border-bottom-color:var(--ink);}
+
+  @media (max-width:600px){
+    header.hero{padding:64px 0 40px;}
+    .card{padding:22px;}
+  }
+</style>
 </head>
 <body>
-    <h1>Hello, world!</h1>
-    <p>Welcome to my brand new website hosted on GitHub Pages.</p>
+
+<div class="wrap">
+  <header class="hero">
+    <p class="eyebrow">// srikha · applied math + ai engineering</p>
+    <h1>Turning <em>signals</em> into<br>systems.</h1>
+    <p class="lede">Math student at UT Austin (Dean's Scholar), incoming MS in Applied Mathematics at Columbia. I work at the intersection of quantitative research and applied AI engineering — from topology research on knot invariants to hands-on systems I build to learn.</p>
+    <div class="links">
+      <a class="btn primary" href="#projects">View projects</a>
+      <a class="btn" href="#research">Research</a>
+      <a class="btn" href="https://github.com/srikha369" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="btn" href="#contact">Contact</a>
+    </div>
+
+    <div class="signal">
+      <svg viewBox="0 0 900 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A noisy signal being resolved into a clean waveform">
+        <polyline points="0,110 30,105 60,115 90,95 120,120 150,90 180,118 210,85 240,112 270,80 300,108 330,75 360,105 390,70 420,100 450,65 480,95 510,60 540,88 570,55 600,80 630,50 660,72 690,45 720,66 750,40 780,58 810,35 840,50 870,32 900,45"
+          fill="none" stroke="var(--line)" stroke-width="1.5"/>
+        <path d="M0,70 C75,20 150,120 225,70 C300,20 375,120 450,70 C525,20 600,120 675,70 C750,20 825,120 900,70"
+          fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+      <div class="signal-caption">
+        <span>raw input</span>
+        <span>→ resolved output</span>
+      </div>
+    </div>
+  </header>
+
+  <section id="projects" class="divider">
+    <p class="section-label">Projects</p>
+    <h2>Selected work</h2>
+    <p class="lede" style="margin-bottom:32px;">Hands-on engineering builds — more going up here as I finish them.</p>
+
+    <div class="projects">
+
+      <div class="card">
+        <div class="card-top">
+          <h3 class="card-title">Voice Bot Evaluator</h3>
+          <span class="status progress">In progress</span>
+        </div>
+        <p>An outbound-calling AI voice agent that stress-tests a healthcare conversational AI agent by simulating distinct patient personas — vague input, emergency escalation, off-topic detours, contradictions, emotional de-escalation, and safety-protocol edge cases. Claude Haiku generates each persona's live responses over a real phone call via Twilio, and the bot scores the target agent's performance after each run.</p>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">Flask</span>
+          <span class="tag">Twilio Voice API</span>
+          <span class="tag">Claude Haiku</span>
+          <span class="tag">ngrok</span>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/Srikha369/testing-voice-bot" target="_blank" rel="noopener">Repo ↗</a>
+        </div>
+      </div>
+
+      <div class="card placeholder">
+        <div class="card-top">
+          <h3 class="card-title">[ Next project ]</h3>
+          <span class="status live">&nbsp;</span>
+        </div>
+        <p>Open slot for the next build.</p>
+        <div class="tags"><span class="tag">stack</span></div>
+        <div class="card-links"><a href="#">Repo ↗</a></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="research" class="divider">
+    <p class="section-label">Research</p>
+    <h2>Papers &amp; publications</h2>
+    <p class="lede" style="margin-bottom:32px;">Published, in-progress, and presented research across applied math, signal processing, and machine learning.</p>
+
+    <div class="projects">
+
+      <div class="card">
+        <div class="card-top">
+          <h3 class="card-title">Simulated HRV Analysis for Stress and Fatigue Detection in Construction Workers</h3>
+          <span class="status progress">In publication</span>
+        </div>
+        <p>As an ML Engineering Research Intern on an NSF-funded REU at Illinois Institute of Technology, built a novel end-to-end machine learning pipeline for stress and fatigue classification from physiological sensor data, aimed at real-world deployment in construction worker safety monitoring. Evaluated multiple model architectures with hyperparameter tuning and a novel uniLASSO regularization approach, prioritizing interpretability alongside a 5x reduction in error. Co-authored paper currently in the publication process; presented as a poster at the Joint Mathematics Meeting 2026 and as a lecture at the IIT SURE Final Conference.</p>
+        <div class="tags">
+          <span class="tag">Machine Learning</span>
+          <span class="tag">Physiological Signal Processing</span>
+          <span class="tag">uniLASSO</span>
+          <span class="tag">Model Interpretability</span>
+          <span class="tag">Python</span>
+        </div>
+        <div class="card-links">
+          <span style="font-family:'JetBrains Mono', monospace; font-size:13px; color:var(--ink-soft);">Paper PDF coming soon · Presented at JMM 2026 &amp; IIT SURE 2025</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <h3 class="card-title">The Unknotting Number Under Connected Sum and Mutation</h3>
+          <span class="status live">Senior Thesis</span>
+        </div>
+        <p>A knot theory thesis examining a 2025 result that disproved a long-standing conjecture — that unknotting number is additive under connected sum (Wendt, 1937) — via a counterexample built from a torus knot and its mirror image. The accompanying code constructs a directed graph of "Gordian adjacency" between knots to explore the strategy behind the counterexample and the open mutation-invariance problem it leaves behind.</p>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">Graph Theory</span>
+          <span class="tag">Knot Theory</span>
+          <span class="tag">Jupyter</span>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/Srikha369/senior_thesis" target="_blank" rel="noopener">Repo ↗</a>
+          <a href="https://github.com/Srikha369/senior_thesis/blob/main/Srikha%20Chaganti%20Thesis.pdf" target="_blank" rel="noopener">Thesis PDF ↗</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <h3 class="card-title">Calculating Spontaneous Otoacoustic Phase Coherence</h3>
+          <span class="status live">Published</span>
+        </div>
+        <p>Research on nonlinear dynamics in the auditory system, done as a Systems and Signal Processing Research Intern at the Fields Institute for Research in Mathematical Sciences. Constructed a new "phase coherence" metric for acoustic signals to enable quantitative analysis of otoacoustic emissions, built and cross-validated coupled-oscillator models against large-scale raw signal datasets, and applied Volterra series analysis to characterize blackbox nonlinear system behavior — work that led to an invited technical lecture at York University.</p>
+        <div class="tags">
+          <span class="tag">Signal Processing</span>
+          <span class="tag">Nonlinear Dynamics</span>
+          <span class="tag">Volterra Series</span>
+          <span class="tag">Coupled Oscillators</span>
+          <span class="tag">MATLAB</span>
+        </div>
+        <div class="card-links">
+          <a href="https://doi.org/10.1121/10.0035326" target="_blank" rel="noopener">Publication (DOI) ↗</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <h3 class="card-title">Two-Dimensional Topological Data Analysis on Galaxy Distributions</h3>
+          <span class="status live">Research</span>
+        </div>
+        <p>Research as a Computational Data Analysis Researcher at the Geometry of Space Laboratory, UT Austin. Used computational geometry and topological data analysis to extract features from noisy, multidimensional spatial data and map large-scale universe structure, and built data visualization and processing pipelines to clean and interpret large-scale spatial distribution datasets. Wrote a literature survey and paper, "Using Genus Statistic Methods to Explore Two-Dimensional Topology of Galaxies," presented at the 2024 UT Austin Undergraduate Research Forum.</p>
+        <div class="tags">
+          <span class="tag">Topological Data Analysis</span>
+          <span class="tag">Computational Geometry</span>
+          <span class="tag">Python</span>
+          <span class="tag">Data Visualization</span>
+        </div>
+        <div class="card-links">
+          <span style="font-family:'JetBrains Mono', monospace; font-size:13px; color:var(--ink-soft);">Poster presented, UT Austin URF 2024</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="divider">
+    <p class="section-label">About</p>
+    <h2>Background</h2>
+    <p style="max-width:65ch; color:var(--ink-soft);">
+      I'm completing a BS in Mathematics at the University of Texas at Austin (Dean's Scholar, GPA 3.85), heading to Columbia University for an MS in Applied Mathematics. My senior thesis explored open problems in knot theory, and I'm currently building out practical AI/software engineering skills through independent projects — closing the gap between the theory I work with and systems I can ship. I play violin outside of all this.
+    </p>
+  </section>
+
+  <footer id="contact" class="divider">
+    <span>© 2026 Srikha</span>
+    <span>
+      <a href="https://github.com/srikha369" target="_blank" rel="noopener">GitHub</a>
+      &nbsp;·&nbsp;
+      <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:you@example.com">Email</a>
+    </span>
+  </footer>
+</div>
+
 </body>
 </html>
