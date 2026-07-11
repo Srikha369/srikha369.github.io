@@ -85,7 +85,20 @@
   }
   .btn.primary{background:var(--ink); color:var(--paper);}
   .btn:hover{background:var(--accent); border-color:var(--accent); color:#fff;}
+  .currently-reading-box {
+  margin-top: 20px;
+  padding: 12px 18px;
+  background-color: #f4f7f5; /* Light grey-green background */
+  border-left: 4px solid darkgreen; /* Accents the dark green theme change */
+  border-radius: 4px;
+  display: inline-block; /* Keeps the block compact */
+  font-size: 0.95rem;
+}
 
+.book-title {
+  font-style: italic;
+  font-weight: 600;
+}
   /* signal waveform */
   .signal{margin-top:56px;}
   .signal svg{width:100%; height:auto; display:block;}
@@ -222,11 +235,16 @@
     <div class="links">
       <a class="btn primary" href="#projects">View projects</a>
       <a class="btn" href="#research">Research</a>
-      <a class="btn" href="srikha_chaganti_resume.pdf" target="_blank" rel = "noopener">Resume </a>
+      <a class="btn" href="https://github.com/Srikha369/srikha369.github.io/blob/main/srikha_chaganti_resume.pdf" target="_blank" rel = "noopener">Resume </a>
       <a class="btn" href="https://github.com/srikha369" target="_blank" rel="noopener">GitHub ↗</a>
       <a class="btn" href="#contact">Contact</a>
     </div>
 
+    <!-- Insert this right under your contact buttons container -->
+<div class="currently-reading-box">
+  <p><strong>📚 Currently Reading:</strong> <span class="book-title">"Gödel, Escher, Bach: an Eternal Golden Braid"</span> by Douglas Hofstatder</p>
+</div>
+    
     <div class="signal">
       <svg viewBox="0 0 900 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A noisy signal being resolved into a clean waveform">
         <polyline points="0,110 30,105 60,115 90,95 120,120 150,90 180,118 210,85 240,112 270,80 300,108 330,75 360,105 390,70 420,100 450,65 480,95 510,60 540,88 570,55 600,80 630,50 660,72 690,45 720,66 750,40 780,58 810,35 840,50 870,32 900,45"
@@ -354,7 +372,7 @@
     <p class="section-label">About</p>
     <h2>Background</h2>
     <p style="max-width:65ch; color:var(--ink-soft);">
-      I'm completing a BS in Mathematics at the University of Texas at Austin (Dean's Scholar, GPA 3.85), heading to Columbia University for an MS in Applied Mathematics. My senior thesis explored open problems in knot theory, and I'm currently building out practical AI/software engineering skills through independent projects — closing the gap between the theory I work with and systems I can ship. I play violin outside of all this.
+      I graduated with my BS in Mathematics Honors at the University of Texas at Austin in May 2026, where I was a Dean's Scholar. I am heading to Columbia University for an MS in Applied Mathematics. My senior thesis explored open problems in knot theory, and I'm currently building out practical AI/software engineering skills through independent projects — closing the gap between the theory I work with and systems I can ship. I'm invested in bridging the gap between industry and academia, and appreciate the reward and drive research brings me. Outside of all this, I love recipe testing for my friends and family, exploring the city, talking to new people and journaling. 
     </p>
   </section>
 
